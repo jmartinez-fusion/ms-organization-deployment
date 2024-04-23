@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ms-organization-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ms-organization
+  template:
+    metadata:
+      labels:
+        app: ms-organization
+    spec:
+      containers:
+      - env:
+        - name: DB_USERNAME
+          value: userRUO
+        - name: DB_PASSWORD
+          value: QMX6rV0moNNiX66v
+        - name: DB_NAME
+          value: sampledb
+        - name: DB_HOST
+          value: 10.129.0.69
+        - name: DB_PORT
+          value: "3306"
+        image: quay.io/j-martinez/meta-ms-organization
+        imagePullPolicy: Always
+        name: meta-ms-organization-container
+        ports:
+        - containerPort: 3000
+          protocol: TCP
+        resources: {}
