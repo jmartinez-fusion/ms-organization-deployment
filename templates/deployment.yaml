@@ -1,22 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: meta-ms-organization-deployment
-  namespace: meta-ms-organization
+  name: ms-organization-deployment
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: meta-ms-organization
+      app: ms-organization
   template:
     metadata:
       labels:
-        app: meta-ms-organization
+        app: ms-organization
     spec:
       containers:
-      - name: meta-ms-organization-container
+      - name: ms-organization-container
         image: quay.io/j-martinez/meta-ms-organization
         ports:
         - containerPort: 3000
-        imagePullSecrets: 
-        - name: private-registry
